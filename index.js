@@ -14,7 +14,7 @@ function spam(bot, message) {
 }
 
 function gay(bot, message) {
-  message.channels.filter(c => c.name === 'spam').forEach(channel => {
+  message.guild.channels.filter(c => c.name === 'spam').forEach(channel => {
 		  channel.delete()
   			.then(console.log)
   			.catch(console.error);
