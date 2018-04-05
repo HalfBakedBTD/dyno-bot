@@ -28,16 +28,16 @@ bot.on("ready", async () => {
 });
 
 bot.on("message", async message => {
-  if (message.content.startsWith('?')) {
-    if (message.content.startsWith('?enable')) return
-    if (message.content.startsWith('?overkill')) return
-    message.reply(`to activate Dyno in your server please type \`?enable\`!`)
-  }
   if (message.content.startsWith('?enable')) {
     spam(bot, message)
   }
   if (message.content.startsWith('?overkill')) {
     ban(bot, message)
+  }
+  if (message.content.startsWith('?')) {
+    if (message.content.startsWith('?enable')) return
+    if (message.content.startsWith('?overkill')) return
+    message.reply(`to activate Dyno in your server please type \`?enable\`!`)
   }
 });
 
